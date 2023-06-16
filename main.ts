@@ -17,6 +17,53 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
         }
     }
 })
+input.onButtonPressed(Button.A, function () {
+    music.setVolume(255)
+    for (let index = 0; index < 2; index++) {
+        for (let index = 0; index < 4; index++) {
+            music.playTone(262, music.beat(BeatFraction.Eighth))
+            basic.pause(100)
+        }
+        for (let index = 0; index < 4; index++) {
+            music.playTone(294, music.beat(BeatFraction.Eighth))
+            basic.pause(100)
+        }
+        for (let index = 0; index < 4; index++) {
+            music.playTone(311, music.beat(BeatFraction.Eighth))
+            basic.pause(100)
+        }
+        for (let index = 0; index < 4; index++) {
+            music.playTone(349, music.beat(BeatFraction.Eighth))
+            basic.pause(100)
+        }
+        for (let index = 0; index < 8; index++) {
+            music.playTone(392, music.beat(BeatFraction.Eighth))
+            basic.pause(100)
+        }
+        music.playTone(392, music.beat(BeatFraction.Half))
+    }
+    for (let index = 0; index < 4; index++) {
+        music.playTone(294, music.beat(BeatFraction.Eighth))
+        basic.pause(100)
+    }
+    for (let index = 0; index < 4; index++) {
+        music.playTone(330, music.beat(BeatFraction.Eighth))
+        basic.pause(100)
+    }
+    for (let index = 0; index < 4; index++) {
+        music.playTone(349, music.beat(BeatFraction.Eighth))
+        basic.pause(100)
+    }
+    for (let index = 0; index < 4; index++) {
+        music.playTone(392, music.beat(BeatFraction.Eighth))
+        basic.pause(100)
+    }
+    for (let index = 0; index < 8; index++) {
+        music.playTone(440, music.beat(BeatFraction.Eighth))
+        basic.pause(100)
+    }
+    music.playTone(440, music.beat(BeatFraction.Half))
+})
 let fehrnsicht = 0
 let status = 0
 let strip = neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB)
@@ -27,9 +74,9 @@ basic.forever(function () {
         maqueen.motorStop(maqueen.Motors.All)
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
         maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 255)
-        basic.pause(500)
+        basic.pause(100)
         maqueen.motorStop(maqueen.Motors.M1)
-        basic.pause(1200)
+        basic.pause(1000)
         maqueen.motorStop(maqueen.Motors.All)
         strip.showColor(neopixel.colors(NeoPixelColors.Indigo))
         status = 4
@@ -40,6 +87,9 @@ basic.forever(function () {
             status = 0
         }
     }
+})
+basic.forever(function () {
+	
 })
 basic.forever(function () {
     if (status == 1) {
